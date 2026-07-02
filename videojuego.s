@@ -1,8 +1,8 @@
     ; vasmm68k_mot.exe -kick1hunks -Fhunkexe sprites3_joystick_imagen_fondo_ok.s -o sprites3_joystick_imagen_fondo_ok
 	; java -jar d:\amigahd\sources\bin\IFFConverter.jar Lost_In_The_Cave.iff . 2
 
-	incdir "..\include"
-	;incdir ".\imagenes"
+	incdir ".\include"
+	incdir ".\imagenes"
 	
 	include "custom.i"
 	include "macros.i"
