@@ -47,7 +47,7 @@ init:
 main:
     WAIT_VB
 
-	; actualizar posición sprite
+	; actualizar posición sprite (creo que quiere decirde la "bola")
 	lea		ball_entity,a0
 	move.w	#16,d4
 	bsr		updateEntity
