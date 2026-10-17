@@ -194,7 +194,10 @@ checkJoystick:
 .up:
 	move.w	#-2,pad_vy
 
-.disparo
+	move.w  pad_x,proyectil_x ; copiar X del pad al proyectil
+    move.w  pad_y,proyectil_y ; copiar Y del pad al proyectil
+
+
 
 .checkJoystickEnd:
 	rts
@@ -291,7 +294,7 @@ drawSprite:
 	add.w   #$2c,d3			; sumamos y inicial de los sprites, que es DIWSTRT
 	move.b  d3,(a0)			; movemos los 8 bits menos significativos a la cabecera del sprite
 	
-	lsr.w   #6,d3			; desplazamos 6 bits a la derecha para colocar el bit 8 del start vertical en el bit 2
+	lsr.w   #6,d3			; desplazamos 6 bits a la derecha para colocar el bit 8 del start vertical 8222en el bit 2
 	and.b	#%00000100,d3	; máscara para quedarnos con el bit 2
 	or.b   d3,3(a0)			; movemos el bit 2 a la cabecera del sprite
 
@@ -563,7 +566,7 @@ proyectil_entity:
 proyectil_x				dc.w 	0
 proyectil_y				dc.w 	40
 proyectil_vx			dc.w 	0
-proyectil_vy			dc.w 	1
+proyectil_vy			dc.w 	-1
 
 
 ; array de 8 entidades
