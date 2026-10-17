@@ -196,7 +196,7 @@ checkJoystick:
 
 	move.w  pad_x,proyectil_x ; copiar X del pad al proyectil
     move.w  pad_y,proyectil_y ; copiar Y del pad al proyectil
-
+    move.w  #-2,proyectil_vy   ; salir siempre hacia arriba
 
 
 .checkJoystickEnd:
@@ -566,7 +566,7 @@ proyectil_entity:
 proyectil_x				dc.w 	0
 proyectil_y				dc.w 	40
 proyectil_vx			dc.w 	0
-proyectil_vy			dc.w 	-1
+proyectil_vy			dc.w 	-2
 
 
 ; array de 8 entidades
