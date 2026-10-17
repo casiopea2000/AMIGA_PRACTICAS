@@ -42,7 +42,7 @@ init:
 	POKE_SPRITE					    ; informar punteros a los sprites en la copperlist
 
 	move.l	#proyectil_sprite,d0    ; d0 = dirección del gráfico del pad
-	lea		CopSprP2,a0				; a0 = dirección de punteros a los sprites en la copperlist
+	lea		CopSprP1,a0				; a0 = dirección de punteros a los sprites en la copperlist
 	POKE_SPRITE					    ; informar punteros a los sprites en la copperlist
 
 
@@ -395,8 +395,12 @@ CopSprP0:
 	dc.w 	SPR0PTL,$0000			; SPR0PTL / puntero al sprite 0 (16 bits bajos)
 
 CopSprP1:
-	dc.w 	SPR1PTH,$0000			; SPR0PTH / puntero al sprite 0 (16 bits altos)
-	dc.w 	SPR1PTL,$0000			; SPR0PTL / puntero al sprite 0 (16 bits bajos)
+	dc.w 	SPR1PTH,$0000			; SPR0PTH / puntero al sprite 1 (16 bits altos)
+	dc.w 	SPR1PTL,$0000			; SPR0PTL / puntero al sprite 1 (16 bits bajos)
+
+CopSprP2:
+	dc.w 	SPR2PTH,$0000			; SPR0PTH / puntero al sprite 2 (16 bits altos)
+	dc.w 	SPR2PTL,$0000			; SPR0PTL / puntero al sprite 2 (16 bits bajos)
 
 	; ----- BITPLANES -----
 
@@ -466,6 +470,30 @@ pad_sprite:
 ;01 1 ROJO
 ;10 2 NEGRO
 ;11 3 NEGRO
+
+proyectil_sprite:							    						
+	; PRIMER USO DEL SPRITE 0
+    dc.w	$2c40,$3c00			    ; SPR0POS SPR0CTL		
+	
+    dc.w	$07e0,$0000				; línea 0, "plano" 2
+	dc.w	$1ff8,$0000				; línea 1, "plano" 2												
+	dc.w	$381c,$07e0 																			
+	dc.w	$718e,$0ff0																		   	
+	dc.w	$67e6,$1ff8							
+	dc.w	$cff3,$3ffc							
+	dc.w	$cff3,$3ffc
+	dc.w	$dffb,$3ffc
+	dc.w	$dffb,$3ffc 
+	dc.w	$cff3,$3ffc 
+	dc.w	$cff3,$3ffc 
+	dc.w	$67e6,$1ff8
+	dc.w	$718e,$0ff0 
+	dc.w	$381c,$07e0 
+	dc.w	$1ff8,$0000 
+	dc.w	$07e0,$0000
+
+	dc.w	$0000,$0000
+
 
 nullSprite:
 	dc.w	$0000,$0000
