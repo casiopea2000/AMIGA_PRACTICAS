@@ -112,27 +112,31 @@ exit:
 ; ==================================
 checkCollision:
 	; 1) ball_x + ball_w < pad.x
-	move.w	ball_x,d0				; d0 = x de la bola
+	;move.w	ball_x,d0				; d0 = x de la bola
+	move.w	proyectil_x,d0				; d0 = x de la bola
 	add.w	#16,d0					; d0 = x de la bola + su ancho
-	cmp.w	pad_x,d0				; comparamos con la x del pad
+	cmp.w	ball_x,d0				; comparamos con la x del pad
 	blt		.checkCollisionEnd		; no hay colisión
 
 	; 2) ball_x > pad.x + pad_w
-	move.w	pad_x,d0
+	;move.w	pad_x,d0
+	move.w	ball_x,d0
 	add.w	#16,d0
-	cmp.w	ball_x,d0
+	cmp.w	proyectil_x,d0
 	blt		.checkCollisionEnd
 
 	; 3) ball_y + ball_h < pad.y
-	move.w	ball_y,d0				; d0 = y de la bola
+	;move.w	ball_y,d0				; d0 = y de la bola
+	move.w	proyectil_y,d0				; d0 = y de la bola
 	add.w	#16,d0					; d0 = y de la bola + su alto
-	cmp.w	pad_y,d0				; comparamos con la y del pad
+	cmp.w	ball_y,d0				; comparamos con la y del pad
 	blt		.checkCollisionEnd		; no hay colisión
 
 	; 4) ball_y > pad.y + pad_h
-	move.w	pad_y,d0
+	;move.w	pad_y,d0
+	move.w	ball_y,d0
 	add.w	#32,d0
-	cmp.w	ball_y,d0
+	cmp.w	proyectil_y,d0
 	blt		.checkCollisionEnd
 
 	; SI LLEGAMOS A ESTE PUNTO ES PORQUE HAY COLISIÓN
