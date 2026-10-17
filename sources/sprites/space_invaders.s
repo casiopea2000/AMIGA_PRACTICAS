@@ -42,7 +42,7 @@ init:
 	POKE_SPRITE					    ; informar punteros a los sprites en la copperlist
 
 	move.l	#proyectil_sprite,d0    ; d0 = dirección del gráfico del pad
-	lea		CopSprP1,a0				; a0 = dirección de punteros a los sprites en la copperlist
+	lea		CopSprP2,a0				; a0 = dirección de punteros a los sprites en la copperlist
 	POKE_SPRITE					    ; informar punteros a los sprites en la copperlist
 
 
@@ -194,6 +194,8 @@ checkJoystick:
 .up:
 	move.w	#-2,pad_vy
 
+.disparo
+
 .checkJoystickEnd:
 	rts
 
@@ -335,6 +337,12 @@ copperlist:
 	dc.w 	COLOR17,$0d00           ; COLOR 17
 	dc.w 	COLOR18,$0e60           ; COLOR 18
 	dc.w 	COLOR19,$0fff           ; COLOR 19
+
+	;---agrego los colores que son necesarios para el canal del sprite 3
+
+	dc.w    COLOR21,$004f     ; azul
+	dc.w    COLOR22,$00ef     ; cian
+	dc.w    COLOR23,$0fff     ; blanco
 
 	;--PALETA FONDO (BORAR)
 
@@ -555,7 +563,7 @@ proyectil_entity:
 proyectil_x				dc.w 	0
 proyectil_y				dc.w 	40
 proyectil_vx			dc.w 	0
-proyectil_vy			dc.w 	0
+proyectil_vy			dc.w 	1
 
 
 ; array de 8 entidades
